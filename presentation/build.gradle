@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -7,12 +7,12 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
     defaultConfig {
-        applicationId "com.dafian.android.catfacts"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
     }
     buildTypes {
         release {
@@ -33,11 +33,6 @@ dependencies {
 
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlinVersion"
 
-    implementation project(':cache')
-    implementation project(':data')
-    implementation project(':domain')
-    implementation project(':presentation')
-    implementation project(':remote')
     implementation project(':usecase')
 
     implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
@@ -45,10 +40,6 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
-
-    implementation "org.koin:koin-core:$rootProject.koinVersion"
-    implementation "org.koin:koin-android:$rootProject.koinVersion"
-    implementation "org.koin:koin-android-viewmodel:$rootProject.koinVersion"
 
     testImplementation "junit:junit:$rootProject.junitVersion"
 
